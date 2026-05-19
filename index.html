@@ -39,22 +39,40 @@
     flex-shrink: 0;
   }
 
-  /* News & Updates list */
-  .news-list {
+  /* News & Updates — continuous vertical ticker */
+  .news-ticker {
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+  }
+  .news-track {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    margin-bottom: 1rem;
+    gap: 0.7rem;
+    animation: news-scroll 28s linear infinite;
+  }
+  .news-ticker:hover .news-track {
+    animation-play-state: paused;
+  }
+  @keyframes news-scroll {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-50%); }
   }
   .news-item {
     display: grid;
     grid-template-columns: 116px 1fr;
     gap: 1.25rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
+    padding: 1.1rem 1.25rem;
     align-items: baseline;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 8px;
+    flex-shrink: 0;
   }
-  .news-item:last-child { border-bottom: none; }
   .news-date {
     font-size: 0.78rem;
     font-weight: 500;
@@ -80,7 +98,7 @@
     letter-spacing: 0.04em;
     padding: 1px 7px;
     border-radius: 4px;
-    background: var(--paper);
+    background: var(--bg);
     border: 1px solid var(--border);
     color: var(--text-soft);
     margin-right: 8px;
@@ -88,9 +106,19 @@
   }
 
   @media (max-width: 600px) {
+    .news-ticker { height: 270px; }
     .news-item {
       grid-template-columns: 1fr;
       gap: 0.3rem;
+    }
+  }
+  /* Respect users who prefer reduced motion: stop the scroll */
+  @media (prefers-reduced-motion: reduce) {
+    .news-track { animation: none; }
+    .news-ticker {
+      height: auto;
+      -webkit-mask-image: none;
+      mask-image: none;
     }
   }
 </style>
@@ -142,22 +170,42 @@
   </div>
 
   <div class="section-label"><h2>News &amp; Updates</h2></div>
-  <div class="news-list">
-    <div class="news-item">
-      <div class="news-date">[Mon 2026]</div>
-      <div class="news-text"><span class="news-tag">Group</span>[Add a recent item — e.g., a new student joined the group, or write your own.]</div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">[Mon 2026]</div>
-      <div class="news-text"><span class="news-tag">Paper</span>[Add a recent publication — title and venue, optionally linked.]</div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">[Mon 2026]</div>
-      <div class="news-text"><span class="news-tag">Talk</span>[Add a recent talk or conference presentation.]</div>
-    </div>
-    <div class="news-item">
-      <div class="news-date">[Mon 2026]</div>
-      <div class="news-text"><span class="news-tag">Lab</span>The group website is live. <a href="join.html">We are recruiting</a> — see open positions.</div>
+  <div class="news-ticker">
+    <div class="news-track">
+      <!-- News items: edit these four. They are duplicated below for a seamless loop. -->
+      <div class="news-item">
+        <div class="news-date">[2026]</div>
+        <div class="news-text"><span class="news-tag">Grant</span>Awarded the <strong>ANRF PMECRG Grant (2026)</strong> to support the group's research in nanophotonics and meta-optics.</div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">[2026]</div>
+        <div class="news-text"><span class="news-tag">Opening</span><strong>New PhD position</strong> in metasurfaces — design and development of large-area metalenses. <a href="join.html">See details &amp; apply</a>.</div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">[2025]</div>
+        <div class="news-text"><span class="news-tag">Grant</span>Awarded the <strong>ANRF-PAIR (Consortium) Grant, 2025</strong> for collaborative research in advanced photonics.</div>
+      </div>
+      <div class="news-item">
+        <div class="news-date">[2026]</div>
+        <div class="news-text"><span class="news-tag">Paper</span>New paper in <em>ACS Applied Optical Materials</em>: &ldquo;High-Index Dielectric Metasurfaces: Unlocking Frontiers in Mid-Infrared Photonics.&rdquo;</div>
+      </div>
+      <!-- Duplicate set — keep identical to the four above for the loop to be seamless. -->
+      <div class="news-item" aria-hidden="true">
+        <div class="news-date">[2026]</div>
+        <div class="news-text"><span class="news-tag">Grant</span>Awarded the <strong>ANRF PMECRG Grant (2026)</strong> to support the group's research in nanophotonics and meta-optics.</div>
+      </div>
+      <div class="news-item" aria-hidden="true">
+        <div class="news-date">[2026]</div>
+        <div class="news-text"><span class="news-tag">Opening</span><strong>New PhD position</strong> in metasurfaces — design and development of large-area metalenses. <a href="join.html">See details &amp; apply</a>.</div>
+      </div>
+      <div class="news-item" aria-hidden="true">
+        <div class="news-date">[2025]</div>
+        <div class="news-text"><span class="news-tag">Grant</span>Awarded the <strong>ANRF-PAIR (Consortium) Grant, 2025</strong> for collaborative research in advanced photonics.</div>
+      </div>
+      <div class="news-item" aria-hidden="true">
+        <div class="news-date">[2026]</div>
+        <div class="news-text"><span class="news-tag">Paper</span>New paper in <em>ACS Applied Optical Materials</em>: &ldquo;High-Index Dielectric Metasurfaces: Unlocking Frontiers in Mid-Infrared Photonics.&rdquo;</div>
+      </div>
     </div>
   </div>
 
