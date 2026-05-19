@@ -269,6 +269,37 @@
     z-index: 1;
   }
 
+  /* Quick jump navigation */
+  .jump-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0 0 2rem;
+  }
+  .jump-nav a {
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    padding: 6px 14px;
+    border-radius: 99px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .jump-nav a:hover {
+    border-color: var(--gold);
+    color: var(--navy);
+  }
+
+  /* "Last reviewed" note */
+  .updated-note {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    font-style: italic;
+    margin: -0.5rem 0 1.25rem;
+  }
+
   @media (max-width: 700px) {
     .join-hero { padding: 1.75rem; }
     .opportunity-card { padding: 1.5rem 1.4rem; }
@@ -279,7 +310,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-brand">Danveer Singh</a>
+  <a href="index.html" class="nav-brand"><span class="brand-stack"><span>Danveer Singh</span><span class="brand-lab">Photonics &amp; Meta-Optics Laboratory</span></span></a>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -305,19 +336,31 @@
     <p>Our group thrives on curiosity, rigor, and collaboration. If you're passionate about understanding how light behaves at the nanoscale — and excited to engineer materials and devices that bend, focus, and shape it in new ways — we'd love to hear from you. Below you'll find the current openings and how to apply.</p>
   </div>
 
+  <!-- QUICK NAV -->
+  <div class="jump-nav">
+    <a href="#openings">Current Openings</a>
+    <a href="#facilities">What You'll Work With</a>
+    <a href="#look-for">What We Look For</a>
+    <a href="#apply">How to Apply</a>
+    <a href="#faq">FAQ</a>
+  </div>
+
   <!-- OPPORTUNITIES -->
-  <div class="section-label"><h2>Current Openings</h2></div>
+  <div class="section-label" id="openings">
+    <h2>Current Openings</h2>
+  </div>
+  <p class="updated-note">Openings last reviewed: [Month Year]</p>
 
   <div class="opportunity-card">
     <div class="opportunity-header">
       <h3>PhD Positions</h3>
       <span class="status-badge status-open">● Actively Recruiting</span>
     </div>
-    <p>We are accepting applications for <strong>fully-funded PhD positions</strong> through IIT Ropar's Department of Physics. Selected candidates will work on cutting-edge problems at the intersection of nanophotonics, plasmonics, and meta-optics.</p>
+    <p>We are accepting applications for <strong>fully-funded PhD positions</strong> through IIT Ropar's Department of Physics. Selected candidates will work on cutting-edge problems at the intersection of nanophotonics, plasmonics, and meta-optics. For the <strong>[Autumn 2026]</strong> cycle we expect to recruit <strong>[1–2]</strong> PhD students.</p>
     <ul>
       <li><strong>Eligibility:</strong> MSc / MTech in Physics, Optics, Photonics, or closely related field</li>
       <li><strong>Required:</strong> Valid score in GATE / JEST / CSIR-NET / equivalent national-level exam</li>
-      <li><strong>Funding:</strong> Standard MHRD / institute fellowship for selected Indian candidates</li>
+      <li><strong>Funding:</strong> Institute fellowship as per Ministry of Education (MoE) norms — currently approximately ₹[xx,xxx]/month at JRF level, revised to the SRF rate after the comprehensive examination</li>
       <li><strong>International applicants:</strong> Welcome with their own funding (e.g., country-specific scholarships, government fellowships)</li>
     </ul>
   </div>
@@ -353,11 +396,41 @@
       <h3>Postdocs &amp; Research Associates</h3>
       <span class="status-badge status-rolling">● Always Open to Strong Candidates</span>
     </div>
-    <p>Outstanding postdoctoral candidates with a strong publication record in nanophotonics, plasmonics, or related areas are encouraged to reach out. Funding may be available through institute schemes or external fellowships (e.g., DST INSPIRE Faculty, NPDF, Marie Curie).</p>
+    <p>Outstanding postdoctoral candidates with a strong publication record in nanophotonics, plasmonics, or related areas are encouraged to reach out. Funding may be available through institute schemes or external fellowships such as <a href="https://online-inspire.gov.in" target="_blank" rel="noopener" style="color: var(--navy); border-bottom: 1px dotted var(--gold);">DST INSPIRE Faculty</a>, <a href="https://anrfonline.in" target="_blank" rel="noopener" style="color: var(--navy); border-bottom: 1px dotted var(--gold);">N-PDF</a>, or the <a href="https://marie-sklodowska-curie-actions.ec.europa.eu" target="_blank" rel="noopener" style="color: var(--navy); border-bottom: 1px dotted var(--gold);">Marie Skłodowska-Curie Actions</a>.</p>
+  </div>
+
+  <!-- WHAT YOU'LL WORK WITH -->
+  <div class="section-label" id="facilities">
+    <h2>What You'll Work With</h2>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">◆</div>
+      <h4>Optical Characterization</h4>
+      <p>A custom dual-channel optical microscope for simultaneous forward and backward imaging, white-light and Fourier (back-focal-plane) imaging, and angle-resolved measurements. [Add spectrometers, laser sources, polarization optics.]</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">◆</div>
+      <h4>Nanofabrication</h4>
+      <p>Access to [institute Central Research Facility / cleanroom] for [e-beam lithography, thin-film deposition, sample preparation].</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">◆</div>
+      <h4>Computation</h4>
+      <p>Dedicated workstations and [institute HPC access] for electromagnetic modelling with COMSOL, Lumerical, and in-house Python / MATLAB codes.</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">◆</div>
+      <h4>A Collaborative Setting</h4>
+      <p>Weekly group meetings and journal clubs, active collaborations, and support to present work at national and international conferences.</p>
+    </div>
   </div>
 
   <!-- WHAT WE LOOK FOR -->
-  <div class="section-label"><h2>What We Look For</h2></div>
+  <div class="section-label" id="look-for">
+    <h2>What We Look For</h2>
+  </div>
 
   <div class="skills-grid">
     <div class="skill-card">
@@ -393,7 +466,9 @@
   </div>
 
   <!-- HOW TO APPLY -->
-  <div class="section-label"><h2>How to Apply</h2></div>
+  <div class="section-label" id="apply">
+    <h2>How to Apply</h2>
+  </div>
 
   <ol class="step-list">
     <li>
@@ -416,14 +491,19 @@
 
   <!-- EMAIL TEMPLATE -->
   <div class="section-label"><h2>Suggested Email Template</h2></div>
-  <p style="color: var(--text-soft); font-size: 0.95rem; line-height: 1.65; margin-bottom: 1rem;">A clear, specific email is more likely to get a response than a generic one. Feel free to adapt the template below.</p>
+  <p style="color: var(--text-soft); font-size: 0.95rem; line-height: 1.65; margin-bottom: 1rem;">A clear, specific email is far more likely to get a response than a generic one. Choose the subject line that matches the position you're applying for, then adapt the body below.</p>
 
   <div class="email-template">
-    <span class="field-label">Subject:</span> PhD Application — [Your Name] — Background in [Your Field]<br><br>
+    <span class="field-label">Subject lines &mdash; pick one:</span><br>
+    PhD Application — [Your Name] — Background in [Your Field]<br>
+    MSc / MTech Project — [Your Name] — [Your Department]<br>
+    Summer Internship — [Your Name] — [Your Institution]<br>
+    Postdoc Enquiry — [Your Name] — [Your Research Area]<br><br>
     Dear Dr. Singh,<br><br>
-    I am [Your Name], currently pursuing/completed [Degree] from [Institution]. I am writing to express my interest in joining your research group as a PhD student.<br><br>
+    I am [Your Name], currently pursuing/completed [Degree] from [Institution]. I am writing to express my interest in joining your research group as a [PhD student / project student / summer intern / postdoctoral researcher].<br><br>
     I have been particularly interested in your work on [specific paper or topic, e.g., curved-space plasmonics or selenium Mie resonators]. My background in [your area] and experience with [specific skills/tools] aligns well with this direction.<br><br>
-    I have attached my CV for your review. I would be grateful for the opportunity to discuss potential research projects.<br><br>
+    [PhD / postdoc: mention your GATE / NET / JEST score or proposed funding source. Interns: mention your available dates and relevant coursework.]<br><br>
+    I have attached my CV [and transcripts] for your review. I would be grateful for the opportunity to discuss potential research projects.<br><br>
     Thank you for your time and consideration.<br><br>
     Best regards,<br>
     [Your Name]<br>
@@ -431,7 +511,9 @@
   </div>
 
   <!-- FAQ -->
-  <div class="section-label"><h2>Frequently Asked Questions</h2></div>
+  <div class="section-label" id="faq">
+    <h2>Frequently Asked Questions</h2>
+  </div>
 
   <details class="faq-item">
     <summary>What's the application deadline for PhD admissions?</summary>
@@ -473,7 +555,7 @@
 </main>
 
 <footer>
-  &copy; 2026 Danveer Singh &nbsp;·&nbsp; IIT Ropar &nbsp;·&nbsp; Nanophotonics Lab
+  &copy; 2026 Photonics &amp; Meta-Optics Laboratory &nbsp;·&nbsp; Danveer Singh &nbsp;·&nbsp; IIT Ropar
 </footer>
 
 </body>

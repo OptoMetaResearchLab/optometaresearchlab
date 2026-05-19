@@ -66,6 +66,20 @@ nav {
   gap: 0.6rem;
 }
 
+.nav-brand .brand-stack {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.18;
+}
+.nav-brand .brand-lab {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
 .nav-brand::before {
   content: '';
   width: 8px;
