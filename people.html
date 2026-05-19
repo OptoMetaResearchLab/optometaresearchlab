@@ -6,6 +6,69 @@
 <title>People — Danveer Singh</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* ===== People page — refined card design ===== */
+
+  /* Smaller, tighter grid so photos read as polished headshots, not posters */
+  .people-grid {
+    grid-template-columns: repeat(auto-fill, minmax(206px, 1fr));
+    gap: 1.4rem;
+    align-items: start;
+  }
+
+  /* Portrait headshot ratio — more professional than a full square */
+  .person-photo {
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(160deg, #e8edf2, #d3dbe4);
+  }
+
+  /* Gentle desaturation at rest unifies photos of differing lighting;
+     full colour + subtle zoom on hover adds life */
+  .person-photo img {
+    filter: grayscale(16%) contrast(1.02);
+    transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.4s ease;
+  }
+  .person-card:hover .person-photo img {
+    transform: scale(1.045);
+    filter: grayscale(0) contrast(1);
+  }
+
+  /* Tighter, cleaner text block */
+  .person-info {
+    padding: 1.05rem 1.2rem 1.3rem;
+  }
+  .person-info h3 {
+    font-size: 1.04rem;
+  }
+  .person-role {
+    font-size: 0.72rem;
+    padding: 3px 9px;
+    margin-bottom: 0.7rem;
+  }
+  .person-bio {
+    font-size: 0.83rem;
+    line-height: 1.6;
+  }
+
+  /* PI card: keep it prominent but consistent with the refined look */
+  .person-card.lead .person-photo img {
+    filter: grayscale(10%) contrast(1.02);
+  }
+  .person-card.lead:hover .person-photo img {
+    transform: none;
+    filter: grayscale(0) contrast(1);
+  }
+
+  /* Phones: two neat columns instead of one oversized card */
+  @media (max-width: 600px) {
+    .people-grid {
+      grid-template-columns: repeat(auto-fill, minmax(144px, 1fr));
+      gap: 1rem;
+    }
+    .person-info { padding: 0.9rem 1rem 1.1rem; }
+    .person-bio { font-size: 0.8rem; }
+  }
+</style>
 </head>
 <body>
 
