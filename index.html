@@ -7,6 +7,93 @@
 <meta name="description" content="Dr. Danveer Singh — Assistant Professor at IIT Ropar. Research in nanophotonics, plasmonics, and meta-optics for sensing, imaging, and quantum technologies.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* ===== Home page additions ===== */
+
+  /* Recruiting cue in the hero */
+  .recruiting-cue {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 1.6rem;
+    padding: 7px 15px;
+    border-radius: 99px;
+    background: rgba(201, 168, 76, 0.12);
+    border: 1px solid rgba(201, 168, 76, 0.45);
+    color: #8a6820;
+    font-size: 0.84rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .recruiting-cue:hover {
+    background: rgba(201, 168, 76, 0.2);
+    border-color: rgba(201, 168, 76, 0.75);
+  }
+  .recruiting-cue .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #2e9e5b;
+    box-shadow: 0 0 0 3px rgba(46, 158, 91, 0.22);
+    flex-shrink: 0;
+  }
+
+  /* News & Updates list */
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 1rem;
+  }
+  .news-item {
+    display: grid;
+    grid-template-columns: 116px 1fr;
+    gap: 1.25rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-date {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: #8a6820;
+    text-transform: uppercase;
+  }
+  .news-text {
+    font-size: 0.93rem;
+    line-height: 1.6;
+    color: var(--text-soft);
+  }
+  .news-text a {
+    color: var(--navy);
+    border-bottom: 1px dotted var(--gold);
+    text-decoration: none;
+  }
+  .news-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 1px 7px;
+    border-radius: 4px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+    margin-right: 8px;
+    vertical-align: 1px;
+  }
+
+  @media (max-width: 600px) {
+    .news-item {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -35,6 +122,11 @@
         <a href="research.html" class="btn btn-primary">Explore Research →</a>
         <a href="publications.html" class="btn btn-ghost">View Publications</a>
       </div>
+      <br>
+      <a href="join.html" class="recruiting-cue">
+        <span class="dot"></span>
+        Actively recruiting PhD students &amp; interns for [Autumn 2026] →
+      </a>
     </div>
     <div class="hero-image">
       <img src="Homepage.jpg" alt="Nanophotonics research">
@@ -47,6 +139,26 @@
     <div class="section-label"><h2>Welcome</h2></div>
     <p>Welcome to my homepage. Our research focuses on light manipulation, modulation, and its dynamics using innovative systems based on emerging materials like high-index topological insulators and phase-change materials. We harness unique structures such as curved-space metallic systems and metasurfaces to advance light control at nano- and microscales.</p>
     <p>Our work explores key applications including nanoscale waveguiding, deflection (prisms), focusing, and beam steering, with prospective projects developing compact solutions for advanced imaging and sensing.</p>
+  </div>
+
+  <div class="section-label"><h2>News &amp; Updates</h2></div>
+  <div class="news-list">
+    <div class="news-item">
+      <div class="news-date">[Mon 2026]</div>
+      <div class="news-text"><span class="news-tag">Group</span>[Add a recent item — e.g., a new student joined the group, or write your own.]</div>
+    </div>
+    <div class="news-item">
+      <div class="news-date">[Mon 2026]</div>
+      <div class="news-text"><span class="news-tag">Paper</span>[Add a recent publication — title and venue, optionally linked.]</div>
+    </div>
+    <div class="news-item">
+      <div class="news-date">[Mon 2026]</div>
+      <div class="news-text"><span class="news-tag">Talk</span>[Add a recent talk or conference presentation.]</div>
+    </div>
+    <div class="news-item">
+      <div class="news-date">[Mon 2026]</div>
+      <div class="news-text"><span class="news-tag">Lab</span>The group website is live. <a href="join.html">We are recruiting</a> — see open positions.</div>
+    </div>
   </div>
 
   <div class="section-label"><h2>Major Research Areas</h2></div>
