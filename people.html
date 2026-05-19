@@ -13,7 +13,17 @@
   .people-grid {
     grid-template-columns: repeat(auto-fill, minmax(206px, 1fr));
     gap: 1.4rem;
-    align-items: start;
+    align-items: stretch;
+  }
+
+  /* Flex column so every card in a row matches the tallest one,
+     with the text block filling any leftover space */
+  .person-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .person-card .person-info {
+    flex: 1 1 auto;
   }
 
   /* Portrait headshot ratio — more professional than a full square */
