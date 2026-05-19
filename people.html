@@ -7,86 +7,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* ===== People page — circular avatar card design ===== */
+  /* ===== People page — inset rounded photo card design ===== */
 
-  /* Compact grid: more cards per row, photos read as neat avatars */
+  /* Compact grid; cards in a row stretch to equal height */
   .people-grid {
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
     gap: 1.4rem;
     align-items: stretch;
   }
 
-  /* Card is a centered flex column; all cards in a row match height */
+  /* Card has inner padding so the photo floats, not edge-to-edge */
   .person-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.6rem 1.2rem 1.5rem;
+    padding: 0.65rem;
   }
   .person-card .person-info {
     flex: 1 1 auto;
-    padding: 0;
-    width: 100%;
+    padding: 0.85rem 0.7rem 0.6rem;
   }
 
-  /* Circular avatar — contained, sits on the card */
+  /* Inset rounded photo — portrait ratio matches the source photos */
   .person-photo {
-    width: 132px;
-    height: 132px;
-    aspect-ratio: auto;
-    border-radius: 50%;
+    aspect-ratio: 4 / 5;
+    border-radius: 9px;
     overflow: hidden;
-    margin-bottom: 1rem;
     background: linear-gradient(160deg, #e8edf2, #d3dbe4);
-    border: 3px solid var(--paper);
-    box-shadow: 0 0 0 1px var(--border);
-    flex-shrink: 0;
   }
   .person-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(16%) contrast(1.02);
+    object-position: center 28%;
+    filter: grayscale(15%) contrast(1.02);
     transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.4s ease;
   }
   .person-card:hover .person-photo img {
-    transform: scale(1.06);
+    transform: scale(1.045);
     filter: grayscale(0) contrast(1);
-  }
-  .person-card:hover .person-photo {
-    box-shadow: 0 0 0 1px var(--gold);
   }
 
   /* Text block */
   .person-info h3 {
-    font-size: 1.05rem;
+    font-size: 1.04rem;
   }
   .person-role {
     font-size: 0.72rem;
     padding: 3px 10px;
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.7rem;
   }
   .person-bio {
     font-size: 0.83rem;
     line-height: 1.62;
   }
 
-  /* PI card: keep the side-by-side layout, circular photo */
+  /* PI card: side-by-side, inset rounded photo */
   .person-card.lead {
-    display: grid;
-    align-items: center;
-    text-align: left;
-    padding: 2rem 2.25rem;
+    padding: 1.25rem;
   }
   .person-card.lead .person-photo {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
+    aspect-ratio: 4 / 5;
+    height: auto;
+    border-radius: 10px;
+  }
+  .person-card.lead .person-photo img {
+    object-position: center 25%;
   }
   .person-card.lead .person-info {
-    text-align: left;
-    padding: 0 0 0 0.5rem;
+    padding: 1rem 1.25rem;
   }
   .person-card.lead:hover .person-photo img {
     transform: none;
@@ -96,13 +84,10 @@
   /* Phones: two neat columns */
   @media (max-width: 600px) {
     .people-grid {
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 1rem;
     }
-    .person-card { padding: 1.2rem 0.85rem 1.3rem; }
-    .person-photo { width: 104px; height: 104px; }
     .person-bio { font-size: 0.8rem; }
-    .person-card.lead .person-photo { width: 150px; height: 150px; }
   }
 </style>
 </head>
