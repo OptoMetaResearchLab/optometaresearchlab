@@ -1,0 +1,84 @@
+<!--
+  ============================================================================
+  Visitor Counter  —  optometaresearchlab.github.io
+  ============================================================================
+
+  HOW TO USE (your site is built with Jekyll):
+
+    1. Save this file in your repository as:
+           _includes/visitor-counter.html
+
+    2. Open your layout file (most likely _layouts/default.html) and add the
+       line below wherever you want the counter to show — usually right before
+       the footer's closing tag / copyright line:
+
+           {% include visitor-counter.html %}
+
+    3. Commit and push. Done. The count is stored by a free hosted service
+       (Abacus), so it works on static GitHub Pages with no server of your own.
+
+  CUSTOMISING:
+
+    - The two path segments in the fetch URL below ("optometaresearchlab" and
+      "sitewide") are your namespace + key.
+        * Keep "sitewide" identical on every page  -> ONE total for whole site.
+        * Use a different second word per page (e.g. "publications")
+          -> a SEPARATE count for that page.
+
+    - If the counter service is ever unreachable, the page won't break — it
+      quietly shows a dash ("—") instead of a number.
+
+    - To restyle, edit the .visitor-counter rules in the <style> block. It’s
+      intentionally minimal so it blends into a footer.
+  ============================================================================
+-->
+
+<div class="visitor-counter" aria-label="Site visitor count">
+  <svg class="visitor-counter__icon" viewBox="0 0 24 24" width="14" height="14"
+       fill="none" stroke="currentColor" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
+    <circle cx="12" cy="12" r="3"></circle>
+  </svg>
+  <span class="visitor-counter__label">Visitors:</span>
+  <span id="visitor-count" class="visitor-counter__number">…</span>
+</div>
+
+<style>
+  .visitor-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: #8a8a8a;
+    font-family: inherit;
+    line-height: 1;
+    margin: 0.5rem 0;
+  }
+  .visitor-counter__icon   { flex: 0 0 auto; opacity: 0.75; }
+  .visitor-counter__number { font-variant-numeric: tabular-nums; font-weight: 600; }
+</style>
+
+<script>
+  (function () {
+    // Namespace / key — see "CUSTOMISING" notes at the top of this file.
+    var NAMESPACE = "optometaresearchlab";
+    var KEY       = "sitewide";
+
+    var endpoint = "https://abacus.jasoncameron.dev/hit/" + NAMESPACE + "/" + KEY;
+    var el = document.getElementById("visitor-count");
+    if (!el) return;
+
+    fetch(endpoint)
+      .then(function (res) {
+        if (!res.ok) throw new Error("counter unavailable");
+        return res.json();
+      })
+      .then(function (data) {
+        el.textContent = Number(data.value).toLocaleString();
+      })
+      .catch(function () {
+        el.textContent = "\u2014"; // em dash if the service is down
+      });
+  })();
+</script>
