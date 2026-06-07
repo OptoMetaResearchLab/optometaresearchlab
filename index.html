@@ -169,51 +169,52 @@
     <p>Our work explores key applications including nanoscale waveguiding, deflection (prisms), focusing, and beam steering, with prospective projects developing compact solutions for advanced imaging and sensing.</p>
   </div>
 
-  <div class="section-label"><h2>News &amp; Updates</h2></div>
-  <div class="news-ticker">
-    <div class="news-track">
-      <!-- News items: edit these four. They are duplicated below for a seamless loop. -->
-      <div class="news-item">
-        <div class="news-date">[2026]</div>
-        <div class="news-text"><span class="news-tag">Grant</span>Awarded the <strong>ANRF PMECRG Grant (2026)</strong> to support the group's research in nanophotonics and meta-optics.</div>
-      </div>
-      <div class="news-item">
-        <div class="news-date">[2026]</div>
-        <div class="news-text"><span class="news-tag">Opening</span><strong>New PhD position</strong> in metasurfaces — design and development of large-area metalenses. <a href="join.html">See details &amp; apply</a>.</div>
-      </div>
-      <div class="news-item">
-        <div class="news-date">[2025]</div>
-        <div class="news-text"><span class="news-tag">Grant</span>Awarded the <strong>ANRF-PAIR (Consortium) Grant, 2025</strong> for collaborative research in advanced photonics.</div>
-      </div>
-      <div class="news-item">
-        <div class="news-date">[2026]</div>
-        <div class="news-text"><span class="news-tag">Paper</span>New paper in <em>ACS Applied Optical Materials</em>: &ldquo;High-Index Dielectric Metasurfaces: Unlocking Frontiers in Mid-Infrared Photonics.&rdquo;</div>
-      </div>
-      <!-- Duplicate set — keep identical to the four above for the loop to be seamless. -->
-      <div class="news-item" aria-hidden="true">
-        <div class="news-date">[2026]</div>
-        <div class="news-text"><span class="news-tag">Grant</span>Awarded the <strong>ANRF PMECRG Grant (2026)</strong> to support the group's research in nanophotonics and meta-optics.</div>
-      </div>
-      <div class="news-item" aria-hidden="true">
-        <div class="news-date">[2026]</div>
-        <div class="news-text"><span class="news-tag">Opening</span><strong>New PhD position</strong> in metasurfaces — design and development of large-area metalenses. <a href="join.html">See details &amp; apply</a>.</div>
-      </div>
-      <div class="news-item" aria-hidden="true">
-        <div class="news-date">[2025]</div>
-        <div class="news-text"><span class="news-tag">Grant</span>Awarded the <strong>ANRF-PAIR (Consortium) Grant, 2025</strong> for collaborative research in advanced photonics.</div>
-      </div>
-      <div class="news-item" aria-hidden="true">
-        <div class="news-date">[2026]</div>
-        <div class="news-text"><span class="news-tag">Paper</span>New paper in <em>ACS Applied Optical Materials</em>: &ldquo;High-Index Dielectric Metasurfaces: Unlocking Frontiers in Mid-Infrared Photonics.&rdquo;</div>
-         </div>
-     <div class="news-item" aria-hidden="true">
-  <div class="news-date">[2026]</div>
-  <div class="news-text"><span class="news-tag">Paper</span>Our work on a thermally invariant DLSPP Bragg reflector is accepted in <em>[Advanced Photonics Research]</em>.</div>
+ <!-- ===== News & Updates ticker ===== -->
+<div class="pmol-news">
+  <div class="pmol-news-track">
+
+    <!-- PRIMARY COPY -->
+    <div class="pmol-news-item">
+      <div class="pmol-news-date">[2026]</div>
+      <div class="pmol-news-text"><span class="pmol-news-tag">Paper</span>Our work on a thermally invariant DLSPP Bragg reflector is accepted in <em>[JOURNAL NAME]</em>.</div>
+    </div>
+    <div class="pmol-news-item">
+      <div class="pmol-news-date">[2026]</div>
+      <div class="pmol-news-text"><span class="pmol-news-tag">Paper</span>New paper in <em>ACS Applied Optical Materials</em>: &ldquo;High-Index Dielectric Metasurfaces: Unlocking Frontiers in Mid-Infrared Photonics.&rdquo;</div>
+    </div>
+    <div class="pmol-news-item">
+      <div class="pmol-news-date">[2025]</div>
+      <div class="pmol-news-text"><span class="pmol-news-tag">Grant</span>Awarded the <strong>ANRF-PAIR (Consortium) Grant, 2025</strong> for collaborative research in advanced photonics.</div>
+    </div>
+
+    <!-- CLONE (for seamless loop — keep identical) -->
+    <div class="pmol-news-item" aria-hidden="true">
+      <div class="pmol-news-date">[2026]</div>
+      <div class="pmol-news-text"><span class="pmol-news-tag">Paper</span>Our work on a thermally invariant DLSPP Bragg reflector is accepted in <em>[JOURNAL NAME]</em>.</div>
+    </div>
+    <div class="pmol-news-item" aria-hidden="true">
+      <div class="pmol-news-date">[2026]</div>
+      <div class="pmol-news-text"><span class="pmol-news-tag">Paper</span>New paper in <em>ACS Applied Optical Materials</em>: &ldquo;High-Index Dielectric Metasurfaces: Unlocking Frontiers in Mid-Infrared Photonics.&rdquo;</div>
+    </div>
+    <div class="pmol-news-item" aria-hidden="true">
+      <div class="pmol-news-date">[2025]</div>
+      <div class="pmol-news-text"><span class="pmol-news-tag">Grant</span>Awarded the <strong>ANRF-PAIR (Consortium) Grant, 2025</strong> for collaborative research in advanced photonics.</div>
+    </div>
+
+  </div>
 </div>
 
-    </div>
-  </div>
-
+<style>
+.pmol-news{height:150px;overflow:hidden;position:relative;}
+.pmol-news-track{display:flex;flex-direction:column;animation:pmol-scroll 18s linear infinite;}
+.pmol-news:hover .pmol-news-track{animation-play-state:paused;}
+.pmol-news-item{padding:12px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.pmol-news-date{font-size:.8rem;color:#b8860b;font-weight:600;}
+.pmol-news-text{font-size:.95rem;line-height:1.4;}
+.pmol-news-tag{display:inline-block;background:#1a2a4a;color:#fff;font-size:.7rem;
+  padding:2px 8px;border-radius:4px;margin-right:8px;text-transform:uppercase;letter-spacing:.5px;}
+@keyframes pmol-scroll{0%{transform:translateY(0);}100%{transform:translateY(-50%);}}
+</style>
   <div class="section-label"><h2>Major Research Areas</h2></div>
   <div class="research-grid">
     <div class="research-card">
