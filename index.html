@@ -161,7 +161,7 @@ footer strong{color:#cdd7e6;}
 <section class="hero" style="padding:0;">
   <div class="wrap hero-inner">
     <div class="eyebrow">Department of Physics &middot; IIT Ropar</div>
-    <h1>Engineering light at the <span class="accent">nanoscale</span> with meta-optics and plasmonics.</h1>
+    <h1>Engineering light at the <span class="accent">nanoscale</span> with metasurfaces and plasmonics.</h1>
     <p class="lead">The Photonics &amp; Meta-Optics Laboratory designs flat optics, dielectric-loaded plasmonic waveguides, and meta-optical imaging systems — from the telecom band to the mid-infrared.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="research.html">Explore the Research &rarr;</a>
@@ -314,17 +314,27 @@ footer strong{color:#cdd7e6;}
   </div>
 </footer>
 
-<!-- ===== VISITOR COUNTER (CounterAPI v1 — no signup, counts once per load) ===== -->
+<!-- ===== VISITOR COUNTER (CounterAPI v1 — counts each browser once) ===== -->
 <script>
 (function () {
   var NAMESPACE = "optometaresearchlab";   // your project namespace
-  var COUNTER   = "pmol_home";              // this page's counter name
-  var el = document.getElementById("visitorCount");
-  fetch("https://api.counterapi.dev/v1/" + NAMESPACE + "/" + COUNTER + "/up?t=" + Date.now(), { cache: "no-store" })
+  var COUNTER   = "pmol_unique";            // unique-visitor counter
+  var FLAG      = "pmol_visited";           // local marker for "already counted"
+  var el   = document.getElementById("visitorCount");
+  var base = "https://api.counterapi.dev/v1/" + NAMESPACE + "/" + COUNTER;
+
+  var seen = false;
+  try { seen = localStorage.getItem(FLAG) === "1"; } catch (e) {}
+
+  // New browser -> /up (increment). Returning browser -> read total only.
+  var url = (seen ? base + "/?t=" : base + "/up?t=") + Date.now();
+
+  fetch(url, { cache: "no-store" })
     .then(function (r) { return r.json(); })
     .then(function (d) {
       var n = (d && (d.count != null ? d.count : d.value));
       el.textContent = (n != null) ? Number(n).toLocaleString() : "—";
+      if (!seen) { try { localStorage.setItem(FLAG, "1"); } catch (e) {} }
     })
     .catch(function () { el.textContent = "—"; });
 })();
