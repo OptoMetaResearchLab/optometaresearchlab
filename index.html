@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Photonics &amp; Meta-Optics Laboratory (PMOL) — Danveer Singh, IIT Ropar</title>
-<meta name="description" content="Photonics & Meta-Optics Laboratory (PMOL), Department of Physics, IIT Ropar. Research in metasurfaces, plasmonics, dielectric-loaded plasmonic waveguides, and optical imaging.">
+<meta name="description" content="Photonics & Meta-Optics Laboratory (PMOL), Department of Physics, IIT Ropar. Research in metasurfaces, plasmonics, dielectric-loaded plasmonic waveguides, and optical imaging systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -61,7 +61,15 @@ section{padding:84px 0;}
 .sec-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:500;color:var(--navy);margin-top:8px;}
 .sec-sub{color:var(--muted);max-width:640px;margin-top:12px;font-size:1.05rem;}
 
-/* ===== RESEARCH CARDS ===== */
+/* ===== TABS ===== */
+.tabs-container{margin-top:32px;}
+.tabs-nav{display:flex;gap:8px;margin-bottom:28px;border-bottom:2px solid var(--line);flex-wrap:wrap;}
+.tab-btn{padding:12px 20px;background:none;border:none;font-family:var(--sans);font-size:.95rem;font-weight:600;color:var(--muted);cursor:pointer;transition:color .2s,border-bottom-color .2s;border-bottom:3px solid transparent;margin-bottom:-2px;}
+.tab-btn:hover{color:var(--navy);}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.tab-content{display:none;}
+.tab-content.active{display:block;animation:fadeIn .3s ease-in;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
 .card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:32px;transition:transform .2s,box-shadow .2s;}
 .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(22,38,63,.10);}
@@ -113,6 +121,8 @@ footer strong{color:#cdd7e6;}
   .cards{grid-template-columns:1fr;}
   .news-grid{grid-template-columns:1fr;gap:28px;}
   section{padding:60px 0;}
+  .tabs-nav{gap:4px;}
+  .tab-btn{padding:10px 14px;font-size:.85rem;}
 }
 </style>
 </head>
@@ -146,26 +156,85 @@ footer strong{color:#cdd7e6;}
       <h2 class="sec-title">Major Research Areas</h2>
       <p class="sec-sub">Four interlocking directions, unified by the control of light below the diffraction limit.</p>
     </div>
-    <div class="cards">
-      <div class="card">
-        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="36" height="36" rx="2"/><line x1="14" y1="6" x2="14" y2="42"/><line x1="24" y1="6" x2="24" y2="42"/><line x1="34" y1="6" x2="34" y2="42"/><line x1="6" y1="16" x2="42" y2="16"/><line x1="6" y1="26" x2="42" y2="26"/><line x1="6" y1="36" x2="42" y2="36"/></svg>
-        <h3>Metasurfaces &amp; Meta-Optics</h3>
-        <p>Subwavelength-structured surfaces for wavefront shaping, flat lenses, and tunable optical components at telecom and mid-IR wavelengths.</p>
+
+    <!-- TABS INTERFACE -->
+    <div class="tabs-container">
+      <div class="tabs-nav" role="tablist">
+        <button class="tab-btn active" data-tab="all" role="tab" aria-selected="true" aria-controls="tab-all">All Areas</button>
+        <button class="tab-btn" data-tab="metasurfaces" role="tab" aria-selected="false" aria-controls="tab-metasurfaces">Metasurfaces</button>
+        <button class="tab-btn" data-tab="plasmonics" role="tab" aria-selected="false" aria-controls="tab-plasmonics">Plasmonics</button>
+        <button class="tab-btn" data-tab="imaging" role="tab" aria-selected="false" aria-controls="tab-imaging">Imaging</button>
+        <button class="tab-btn" data-tab="thermal" role="tab" aria-selected="false" aria-controls="tab-thermal">Thermal &amp; SWIR</button>
       </div>
-      <div class="card">
-        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 32h40"/><path d="M4 32c6 0 6-16 12-16s6 16 12 16 6-16 12-16"/><circle cx="10" cy="32" r="2.5" fill="currentColor" stroke="none"/></svg>
-        <h3>Plasmonics &amp; DLSPP Waveguides</h3>
-        <p>Dielectric-loaded surface plasmon polariton platforms, including thermally invariant Bragg reflectors for robust on-chip routing.</p>
+
+      <!-- TAB: ALL AREAS -->
+      <div id="tab-all" class="tab-content active" role="tabpanel">
+        <div class="cards">
+          <div class="card" data-category="metasurfaces">
+            <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="36" height="36" rx="2"/><line x1="14" y1="6" x2="14" y2="42"/><line x1="24" y1="6" x2="24" y2="42"/><line x1="34" y1="6" x2="34" y2="42"/><line x1="6" y1="14" x2="42" y2="14"/><line x1="6" y1="24" x2="42" y2="24"/></svg>
+            <h3>Metasurfaces &amp; Meta-Optics</h3>
+            <p>Subwavelength-structured surfaces for wavefront shaping, flat lenses, and tunable optical components at telecom and mid-IR wavelengths.</p>
+          </div>
+          <div class="card" data-category="plasmonics">
+            <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 32h40"/><path d="M4 32c6 0 6-16 12-16s6 16 12 16 6-16 12-16"/><circle cx="10" cy="32" r="2.5" fill="currentColor"/><circle cx="22" cy="32" r="2.5" fill="currentColor"/><circle cx="34" cy="32" r="2.5" fill="currentColor"/></svg>
+            <h3>Plasmonics &amp; DLSPP Waveguides</h3>
+            <p>Dielectric-loaded surface plasmon polariton platforms, including thermally invariant Bragg reflectors for robust on-chip routing.</p>
+          </div>
+          <div class="card" data-category="imaging">
+            <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="3" fill="currentColor" stroke="none"/><line x1="24" y1="4" x2="24" y2="10"/><line x1="24" y1="38" x2="24" y2="44"/><line x1="4" y1="24" x2="10" y2="24"/><line x1="38" y1="24" x2="44" y2="24"/></svg>
+            <h3>Optical Imaging &amp; Microscopy</h3>
+            <p>Novel imaging modalities and meta-optical components that push resolution, contrast, and spectral reach in compact systems.</p>
+          </div>
+          <div class="card" data-category="thermal">
+            <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6v22a6 6 0 1 0 8 0V6a4 4 0 0 0-8 0z"/><line x1="20" y1="16" x2="14" y2="16"/><line x1="20" y1="26" x2="14" y2="26"/></svg>
+            <h3>Thermal &amp; SWIR Photonics</h3>
+            <p>Broadband metasurfaces and spectroscopy for short-wave-infrared and thermal imaging across temperature.</p>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="3" fill="currentColor" stroke="none"/><line x1="24" y1="4" x2="24" y2="11"/><line x1="24" y1="37" x2="24" y2="44"/><line x1="4" y1="24" x2="11" y2="24"/><line x1="37" y1="24" x2="44" y2="24"/></svg>
-        <h3>Optical Imaging &amp; Microscopy</h3>
-        <p>Novel imaging modalities and meta-optical components that push resolution, contrast, and spectral reach in compact systems.</p>
+
+      <!-- TAB: METASURFACES -->
+      <div id="tab-metasurfaces" class="tab-content" role="tabpanel">
+        <div class="cards">
+          <div class="card">
+            <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="36" height="36" rx="2"/><line x1="14" y1="6" x2="14" y2="42"/><line x1="24" y1="6" x2="24" y2="42"/><line x1="34" y1="6" x2="34" y2="42"/><line x1="6" y1="14" x2="42" y2="14"/><line x1="6" y1="24" x2="42" y2="24"/></svg>
+            <h3>Metasurfaces &amp; Meta-Optics</h3>
+            <p>Subwavelength-structured surfaces for wavefront shaping, flat lenses, and tunable optical components at telecom and mid-IR wavelengths. Our work includes dielectric, plasmonic, and hybrid metasurfaces for beam steering, focusing, and spectral filtering.</p>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6v22a6 6 0 1 0 8 0V6a4 4 0 0 0-8 0z"/><line x1="20" y1="16" x2="14" y2="16"/><line x1="20" y1="22" x2="14" y2="22"/><circle cx="24" cy="34" r="3" fill="currentColor" stroke="none"/></svg>
-        <h3>Thermal &amp; SWIR Photonics</h3>
-        <p>Broadband metasurfaces and spectroscopy for short-wave-infrared and thermal imaging across temperature.</p>
+
+      <!-- TAB: PLASMONICS -->
+      <div id="tab-plasmonics" class="tab-content" role="tabpanel">
+        <div class="cards">
+          <div class="card">
+            <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 32h40"/><path d="M4 32c6 0 6-16 12-16s6 16 12 16 6-16 12-16"/><circle cx="10" cy="32" r="2.5" fill="currentColor"/><circle cx="22" cy="32" r="2.5" fill="currentColor"/><circle cx="34" cy="32" r="2.5" fill="currentColor"/></svg>
+            <h3>Plasmonics &amp; DLSPP Waveguides</h3>
+            <p>Dielectric-loaded surface plasmon polariton platforms, including thermally invariant Bragg reflectors for robust on-chip routing. We engineer plasmonic structures for efficient light confinement and manipulation on sub-wavelength scales.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: IMAGING -->
+      <div id="tab-imaging" class="tab-content" role="tabpanel">
+        <div class="cards">
+          <div class="card">
+            <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="3" fill="currentColor" stroke="none"/><line x1="24" y1="4" x2="24" y2="10"/><line x1="24" y1="38" x2="24" y2="44"/><line x1="4" y1="24" x2="10" y2="24"/><line x1="38" y1="24" x2="44" y2="24"/></svg>
+            <h3>Optical Imaging &amp; Microscopy</h3>
+            <p>Novel imaging modalities and meta-optical components that push resolution, contrast, and spectral reach in compact systems. We develop computational and experimental imaging approaches combining metasurfaces with advanced detection schemes.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: THERMAL & SWIR -->
+      <div id="tab-thermal" class="tab-content" role="tabpanel">
+        <div class="cards">
+          <div class="card">
+            <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6v22a6 6 0 1 0 8 0V6a4 4 0 0 0-8 0z"/><line x1="20" y1="16" x2="14" y2="16"/><line x1="20" y1="26" x2="14" y2="26"/></svg>
+            <h3>Thermal &amp; SWIR Photonics</h3>
+            <p>Broadband metasurfaces and spectroscopy for short-wave-infrared and thermal imaging across temperature. We create spectrally selective and thermally stable components for practical thermal sensing and SWIR applications.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -194,7 +263,7 @@ footer strong{color:#cdd7e6;}
         </div>
         <div class="pmol-news-item">
           <div class="pmol-news-date">2026</div>
-          <div class="pmol-news-text"><span class="pmol-news-tag">Position</span>Open JRF position on broadband metasurfaces for thermal imaging (ANRF PMECRG). <a href="join.html" style="color:var(--gold);font-weight:600;">Apply &rarr;</a></div>
+          <div class="pmol-news-text"><span class="pmol-news-tag">Position</span>Open JRF position on broadband metasurfaces for thermal imaging (ANRF PMECRG). <a href="join.html" style="color:var(--gold-light);font-weight:600;">Apply here &rarr;</a></div>
         </div>
         <div class="pmol-news-item">
           <div class="pmol-news-date">2025</div>
@@ -212,7 +281,7 @@ footer strong{color:#cdd7e6;}
         </div>
         <div class="pmol-news-item" aria-hidden="true">
           <div class="pmol-news-date">2026</div>
-          <div class="pmol-news-text"><span class="pmol-news-tag">Position</span>Open JRF position on broadband metasurfaces for thermal imaging (ANRF PMECRG). <a href="join.html" style="color:var(--gold);font-weight:600;">Apply &rarr;</a></div>
+          <div class="pmol-news-text"><span class="pmol-news-tag">Position</span>Open JRF position on broadband metasurfaces for thermal imaging (ANRF PMECRG). <a href="join.html" style="color:var(--gold-light);font-weight:600;">Apply here &rarr;</a></div>
         </div>
         <div class="pmol-news-item" aria-hidden="true">
           <div class="pmol-news-date">2025</div>
@@ -234,8 +303,8 @@ footer strong{color:#cdd7e6;}
     <div class="pub">
       <div class="yr">2026</div>
       <div class="body">
-        <div class="t">Thermally Invariant DLSPP Bragg Reflector Using Hybrid Si&#8323;N&#8324;/TiO&#8322; Layers</div>
-        <div class="v">Accepted, <em>[JOURNAL NAME]</em> (2026). &lambda; = 1543&nbsp;nm; spectral drift &lt; 0.15% across 100&ndash;800&nbsp;K.</div>
+        <div class="t">Thermally Invariant DLSPP Bragg Reflector Using Hybrid Si₃N₄/TiO₂ Layers</div>
+        <div class="v">Accepted, <em>[JOURNAL NAME]</em> (2026). λ = 1543&nbsp;nm; spectral drift &lt; 0.15% across 100–800&nbsp;K.</div>
       </div>
     </div>
     <div class="pub">
@@ -273,5 +342,27 @@ footer strong{color:#cdd7e6;}
 </footer>
 
 <script src="nav.js"></script>
+<script>
+// Tab functionality
+document.querySelectorAll('.tab-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const tabId = button.getAttribute('data-tab');
+    
+    // Remove active class from all buttons and content
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.tab-content').forEach(content => {
+      content.classList.remove('active');
+    });
+    
+    // Add active class to clicked button and corresponding content
+    button.classList.add('active');
+    button.setAttribute('aria-selected', 'true');
+    document.getElementById(`tab-${tabId}`).classList.add('active');
+  });
+});
+</script>
 </body>
 </html>
